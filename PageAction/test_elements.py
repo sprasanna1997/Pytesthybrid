@@ -16,5 +16,10 @@ class Test_Elements:
         chkbox_obj=Elements(self.driver)
         chkbox_obj.checkbox()
 
+    def test_radiobutton(self,setup):
+        self.driver=setup
+        radio_obj=Elements(self.driver)
+        radio_obj.radiobutton()
+
 
 
