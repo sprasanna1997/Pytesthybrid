@@ -6,10 +6,15 @@ from Utility.Readdata import Readdata
 
 class Test_Elements:
 
-
     def test_textbox(self, setup):
         self.driver = setup
-        ele_obj = Elements(self.driver)
-        ele_obj.click_element()
-        ele_obj.filling_checkbox()
+        txt_obj = Elements(self.driver)
+        txt_obj.click_element()
+        txt_obj.textbox()
+    def test_checkbox(self,setup):
+        self.driver=setup
+        chkbox_obj=Elements(self.driver)
+        chkbox_obj.checkbox()
+
+
 
