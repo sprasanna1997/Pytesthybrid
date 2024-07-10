@@ -1,0 +1,4 @@
+cd PageAction 
+python -m pytest -rA test_elements.py --browser chrome
+
+pytest -rA test_elements.py --browser edge
