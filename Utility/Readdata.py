@@ -13,6 +13,22 @@ class Readdata:
         return config.get("common info", "username")
 
     @staticmethod
+    def lastname():
+        return config.get("common info", "lastname")
+
+    @staticmethod
+    def age():
+        return config.get("common info", "age")
+
+    @staticmethod
+    def salary():
+        return config.get("common info", "salary")
+
+    @staticmethod
+    def department():
+        return config.get("common info", "department")
+
+    @staticmethod
     def email():
         return config.get("common info", "email")
 
