@@ -35,6 +35,7 @@ def browser(request):
 
 
 
+@pytest.hookimpl(tryfirst=True)
 @pytest.mark.optionalhook
 def pytest_metadata(metadata):
     metadata.pop("Platform",None)
