@@ -31,3 +31,10 @@ class Test_Elements:
         webtables_obj.webtables_delete_user()
         webtables_obj.webtables_edit_user()
         webtables_obj.webtables_search_user()
+
+    def test_buttons(self,setup):
+        self.driver=setup
+        buttons_obj=Elements(self.driver)
+        buttons_obj.buttons_single_click()
+        buttons_obj.buttons_right_click()
+        buttons_obj.buttons_double_click()

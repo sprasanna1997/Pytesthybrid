@@ -1,6 +1,8 @@
 import time
 
+import pytest
 from selenium import webdriver
+from selenium.webdriver import ActionChains
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
@@ -64,6 +66,15 @@ efname_input_xpath='(//input[@id="firstname"])[2]'
 elname_input_xpath='(//input[@id="lastname"])[2]'
 eemail1_input_xpath='(//input[@id="email"])[2]'
 esubmit1_btn_xpath='(//input[@type="submit"])[2]'
+
+
+#-----------------Buttons------------------------
+buttons_btn_xpath='// *[text() = " Buttons"]'
+clickme_btn_xpath='//button[text()="Click Me"]'
+rightclickme_btn_xpath='//button[text()="Right Click Me"]'
+doubleclickme_btn_xpath='//button[text()="Double Click Me"]'
+singleclick_txt_xpath='//div[@id="welcomeDiv"]'
+doubleclick_txt_xpath='//*[text()="You have Double clicked "]'
 
 class Elements:
 
@@ -142,7 +153,6 @@ class Elements:
 
     def webtables_delete_user(self):
         table_row=len(self.driver.find_elements(By.XPATH,row_table_xpath))
-        print(table_row)
         self.wait.until(ec.element_to_be_clickable((By.XPATH, delete_btn_xpath))).click()
         table_row2 = len(self.driver.find_elements(By.XPATH, row_table_xpath))
         assert table_row2==table_row-1,"Row deletion failed"
@@ -159,4 +169,26 @@ class Elements:
         self.wait.until(ec.element_to_be_clickable((By.XPATH, search_input_xpath))).send_keys(Readdata.username())
         self.wait.until(ec.element_to_be_clickable((By.XPATH, search_btn_xpath))).click()
         self.loggers.info("******TC004.1-Elements -WebTables -Search the User - Passed*******")
+        self.driver.quit()
+
+
+    def buttons_single_click(self):
+        self.click_element()
+        self.wait.until(ec.element_to_be_clickable((By.XPATH, buttons_btn_xpath))).click()
+        self.wait.until(ec.element_to_be_clickable((By.XPATH, clickme_btn_xpath))).click()
+        single_click_txt=self.driver.find_element(By.XPATH, singleclick_txt_xpath).text
+        assert single_click_txt=="You have done a dynamic click", "Single click Text got from Web is wrong"
+        self.loggers.info("******TC005.1-Elements -Buttons -Single Click - Passed*******")
+
+    def buttons_right_click(self):
+        actions=ActionChains(self.driver)
+        actions.context_click(self.driver.find_element(By.XPATH,rightclickme_btn_xpath)).perform()
+        self.loggers.info("******TC005.2-Elements -Buttons -Right Click - Passed*******")
+
+    def buttons_double_click(self):
+        actions = ActionChains(self.driver)
+        actions.double_click(self.driver.find_element(By.XPATH,doubleclickme_btn_xpath)).perform()
+        double_click_text = self.driver.find_element(By.XPATH, doubleclick_txt_xpath).text
+        assert double_click_text == "You have Double clicked", "Double click Text got from Web is wrong"
+        self.loggers.info("******TC005.3-Elements -Buttons -Double Click - Passed*******")
         self.driver.quit()
