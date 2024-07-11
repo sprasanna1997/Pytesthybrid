@@ -39,3 +39,15 @@ class Readdata:
     @staticmethod
     def password():
         return config.get("common info", "password")
+
+    @staticmethod
+    def mobileno():
+        return config.get("common info", "mobileno")
+
+    @staticmethod
+    def dob():
+        return config.get("common info", "dob")
+
+    @staticmethod
+    def subject():
+        return config.get("common info", "subject")

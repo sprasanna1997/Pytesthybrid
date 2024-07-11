@@ -198,12 +198,12 @@ class Elements:
         self.wait.until(ec.element_to_be_clickable((By.XPATH, elname_input_xpath))).send_keys(Readdata.lastname())
         self.wait.until(ec.element_to_be_clickable((By.XPATH, eemail1_input_xpath))).send_keys(Readdata.email())
         self.wait.until(ec.element_to_be_clickable((By.XPATH, esubmit1_btn_xpath))).click()
-        self.loggers.info("******TC004.1-Elements -WebTables -Edit the User - Passed*******")
+        self.loggers.info("******TC004.3-Elements -WebTables -Edit the User - Passed*******")
 
     def webtables_search_user(self):
         self.wait.until(ec.element_to_be_clickable((By.XPATH, search_input_xpath))).send_keys(Readdata.username())
         self.wait.until(ec.element_to_be_clickable((By.XPATH, search_btn_xpath))).click()
-        self.loggers.info("******TC004.1-Elements -WebTables -Search the User - Passed*******")
+        self.loggers.info("******TC004.4-Elements -WebTables -Search the User - Passed*******")
 
     def buttons_single_click(self):
         self.click_element()
