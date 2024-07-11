@@ -65,7 +65,7 @@ elname_input_xpath = '(//input[@id="lastname"])[2]'
 eemail1_input_xpath = '(//input[@id="email"])[2]'
 esubmit1_btn_xpath = '(//input[@type="submit"])[2]'
 
-#-----------------Buttons------------------------
+#-----------------Buttons----------------------------------
 buttons_btn_xpath = '// *[text() = " Buttons"]'
 clickme_btn_xpath = '//button[text()="Click Me"]'
 rightclickme_btn_xpath = '//button[text()="Right Click Me"]'
@@ -73,7 +73,7 @@ doubleclickme_btn_xpath = '//button[text()="Double Click Me"]'
 singleclick_txt_xpath = '//div[@id="welcomeDiv"]'
 doubleclick_txt_xpath = '//*[text()="You have Double clicked "]'
 
-#---------------------Links----------------------------------------
+#---------------------Links--------------------------------
 links_btn_xpath = '//*[text()=" Links"]'
 home_link_xpath = '//a[text()="Home"]'
 homewPWPU_link_xpath = '//a[text()="HomewPWPU"]'
@@ -93,7 +93,14 @@ authorize_txt_xpath = '//div[@class="authorize"]'
 bidden_txt_xpath = '//div[@class="bidden"]'
 notfound_txt_xpath = '//div[@class="nfound"]'
 
+#---------------------Broken Links--------------------------------
 
+brokenlink_btn_xpath='//*[text()=" Broken Links - Images"]'
+valid_link_xpath='//a[text()="Click Here for Valid Link"]'
+broken_link_xpath='//a[text()="Click Here for Broken Link"]'
+valid_txt_xpath='//*[text()="Valid Link"]'
+broken_txt_xpath='//*[text()="Broken Link"]'
+goback_btn_xpath='//*[text()=" Go Back"]'
 class Elements:
 
     def __init__(self, driver):
@@ -252,3 +259,13 @@ class Elements:
         assert 'Link has responded with staus 404 and status text Not Found' == self.driver.find_element(By.XPATH,notfound_txt_xpath).text
 
         self.loggers.info("******TC006.2-Elements -Links -Existing Tab - Passed*******")
+
+
+    def broken_links(self):
+        self.click_element()
+        self.wait.until(ec.element_to_be_clickable((By.XPATH,brokenlink_btn_xpath))).click()
+        self.wait.until(ec.element_to_be_clickable((By.XPATH,valid_link_xpath))).click()
+        assert 'Valid Link'==self.driver.find_element(By.XPATH,valid_txt_xpath).text,'You Checked an invalid link'
+        self.wait.until(ec.element_to_be_clickable((By.XPATH,broken_link_xpath))).click()
+        self.wait.until(ec.element_to_be_clickable((By.XPATH,goback_btn_xpath))).click()
+        assert 'Broken Link' == self.driver.find_element(By.XPATH, broken_txt_xpath).text, 'You Checked an invalid link'

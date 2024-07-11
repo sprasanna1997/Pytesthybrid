@@ -50,3 +50,9 @@ class Test_Elements:
         links_obj.links_new_tab()
         links_obj.links_existing_tab()
         self.driver.quit()
+
+    def test_brokenlinks(self,setup):
+        self.driver=setup
+        brokenlink_obj=Elements(self.driver)
+        brokenlink_obj.broken_links()
+        self.driver.quit()
