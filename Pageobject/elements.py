@@ -94,13 +94,24 @@ bidden_txt_xpath = '//div[@class="bidden"]'
 notfound_txt_xpath = '//div[@class="nfound"]'
 
 #---------------------Broken Links--------------------------------
-
 brokenlink_btn_xpath='//*[text()=" Broken Links - Images"]'
 valid_link_xpath='//a[text()="Click Here for Valid Link"]'
 broken_link_xpath='//a[text()="Click Here for Broken Link"]'
 valid_txt_xpath='//*[text()="Valid Link"]'
 broken_txt_xpath='//*[text()="Broken Link"]'
 goback_btn_xpath='//*[text()=" Go Back"]'
+
+#--------------------Upload and Download---------------------------
+uploaddownload_btn_xpath='//*[text()=" Upload and Download"]'
+download_btn_xpath='(//*[text()="Download"])[2]'
+upload_btn_xpath='//input[@id="uploadFile"]'
+
+#------------------Dynamic Properties------------------------------
+dynprop_btn_xpath='//*[text()=" Dynamic Properties"]'
+colorchange_btn_xpath='//button[@id="colorChange"]'
+visibleafter_btn_xpath='//button[@id="visibleAfter"]'
+
+
 class Elements:
 
     def __init__(self, driver):
@@ -269,3 +280,20 @@ class Elements:
         self.wait.until(ec.element_to_be_clickable((By.XPATH,broken_link_xpath))).click()
         self.wait.until(ec.element_to_be_clickable((By.XPATH,goback_btn_xpath))).click()
         assert 'Broken Link' == self.driver.find_element(By.XPATH, broken_txt_xpath).text, 'You Checked an invalid link'
+        self.loggers.info("******TC007-Elements -Broken Links- Passed*******")
+
+    def upload_and_download(self):
+        self.click_element()
+        self.wait.until(ec.element_to_be_clickable((By.XPATH,uploaddownload_btn_xpath))).click()
+        self.wait.until(ec.element_to_be_clickable((By.XPATH,download_btn_xpath))).click()
+        self.wait.until(ec.presence_of_element_located((By.XPATH,upload_btn_xpath))).send_keys(r'C://Users//chiya//Downloads//sampleFile.jpeg')
+        self.loggers.info("******TC008-Elements -Upload and Download- Passed*******")
+
+    def dynomic_properties(self):
+        self.click_element()
+        self.wait.until(ec.element_to_be_clickable((By.XPATH,dynprop_btn_xpath))).click()
+        self.wait.until(ec.element_to_be_clickable((By.XPATH,colorchange_btn_xpath))).click()
+        time.sleep(6)
+        visible_btn_check=self.driver.find_element(By.XPATH,visibleafter_btn_xpath).is_displayed()
+        assert visible_btn_check==True,"Button is not Visible"
+        self.loggers.info("******TC009-Elements -Dynamic Properties- Passed*******")

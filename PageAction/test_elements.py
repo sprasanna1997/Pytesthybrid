@@ -56,3 +56,16 @@ class Test_Elements:
         brokenlink_obj=Elements(self.driver)
         brokenlink_obj.broken_links()
         self.driver.quit()
+
+    def test_upload_and_download(self,setup):
+        self.driver=setup
+        upload_obj=Elements(self.driver)
+        upload_obj.upload_and_download()
+        self.driver.quit()
+
+    def test_dynamic_properties(self,setup):
+        self.driver=setup
+        dynmprop_obj=Elements(self.driver)
+        dynmprop_obj.dynomic_properties()
+        self.driver.quit()
+
