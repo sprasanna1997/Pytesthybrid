@@ -11,11 +11,13 @@ class Test_Elements:
         txt_obj = Elements(self.driver)
         txt_obj.click_element()
         txt_obj.textbox()
+        self.driver.quit()
     def test_checkbox(self,setup):
         self.driver=setup
         chkbox_obj=Elements(self.driver)
         chkbox_obj.checkbox_mainlevel1()
         chkbox_obj.checkbox_mainlevel2()
+        self.driver.quit()
 
     def test_radiobutton(self,setup):
         self.driver=setup
@@ -23,6 +25,7 @@ class Test_Elements:
         radio_obj.radiobutton_yes()
         radio_obj.radiobutton_impressive()
         radio_obj.radiobutton_enable_check()
+        self.driver.quit()
 
     def test_webtables(self,setup):
         self.driver=setup
@@ -31,6 +34,7 @@ class Test_Elements:
         webtables_obj.webtables_delete_user()
         webtables_obj.webtables_edit_user()
         webtables_obj.webtables_search_user()
+        self.driver.quit()
 
     def test_buttons(self,setup):
         self.driver=setup
@@ -38,3 +42,11 @@ class Test_Elements:
         buttons_obj.buttons_single_click()
         buttons_obj.buttons_right_click()
         buttons_obj.buttons_double_click()
+        self.driver.quit()
+
+    def test_links(self,setup):
+        self.driver=setup
+        links_obj=Elements(self.driver)
+        links_obj.links_new_tab()
+        links_obj.links_existing_tab()
+        self.driver.quit()
