@@ -12,7 +12,7 @@ class TestForms:
         form_obj.practice_form()
         self.driver.quit()
 
-    @pytest.mark.unittesting
+    
     def test_login_and_register(self,setup):
         self.driver=setup
         login_reg_obj=Forms(self.driver)
