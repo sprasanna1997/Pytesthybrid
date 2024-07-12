@@ -24,6 +24,19 @@ city_drpdwn_xpath='//select[@id="city"]'
 login_btn_xpath='//*[@type="submit"]'
 
 
+#---------------Login & Register--------------------------------------
+login1_btn_xpath='//a[text()=" Login"]'
+newuser_btn_xpath='//a[text()="New User"]'
+username_input_xpath='//*[@id="email"]'
+password_input_xpath='//*[@id="password"]'
+
+firstname_input_xpath='//input[@id="firstname"]'
+lastname_input_xpath='//input[@id="lastname"]'
+username1_input_xpath='//*[@id="username"]'
+register_btn_xpath='//input[@value="Register"]'
+forms_btn_xpath='//button[text()=" Forms"]'
+login2_btn_xpath='//input[@value="Login"]'
+
 class Forms:
 
     def __init__(self,driver):
@@ -49,6 +62,26 @@ class Forms:
         drp.select_by_value("Agra")
         #self.wait.until(ec.element_to_be_clickable((By.XPATH, login_btn_xpath))).click()
         self.logger.info('******TC010-Forms -Practice Form- Passed*******')
+
+
+    def login_and_register(self):
+        self.wait.until(ec.element_to_be_clickable((By.XPATH,login1_btn_xpath))).click()
+        self.wait.until(ec.element_to_be_clickable((By.XPATH,newuser_btn_xpath))).click()
+        self.wait.until(ec.element_to_be_clickable((By.XPATH, firstname_input_xpath))).send_keys(Readdata.username())
+        self.wait.until(ec.element_to_be_clickable((By.XPATH, lastname_input_xpath))).send_keys(Readdata.lastname())
+        self.wait.until(ec.element_to_be_clickable((By.XPATH, username1_input_xpath))).send_keys(Readdata.email())
+        self.wait.until(ec.element_to_be_clickable((By.XPATH, password_input_xpath))).send_keys(Readdata.password())
+        self.wait.until(ec.element_to_be_clickable((By.XPATH,register_btn_xpath))).click()
+        self.logger.info('******TC011-Forms -Form Register- Passed*******')
+        self.wait.until(ec.element_to_be_clickable((By.XPATH, forms_btn_xpath))).click()
+        self.wait.until(ec.element_to_be_clickable((By.XPATH, login1_btn_xpath))).click()
+        self.wait.until(ec.element_to_be_clickable((By.XPATH, username_input_xpath))).send_keys(Readdata.email())
+        self.wait.until(ec.element_to_be_clickable((By.XPATH, password_input_xpath))).send_keys(Readdata.password())
+        self.wait.until(ec.element_to_be_clickable((By.XPATH, login2_btn_xpath))).click()
+        self.logger.info('******TC012-Forms -Form Login- Passed*******')
+
+
+
 
 
 

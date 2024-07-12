@@ -1,2 +1,2 @@
 cd PageAction 
-python -m pytest -rA --browser chrome
+python -m pytest -rA --browser edge
