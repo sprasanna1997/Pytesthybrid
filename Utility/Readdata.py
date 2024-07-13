@@ -1,7 +1,7 @@
 import configparser
 
 config = configparser.RawConfigParser()
-config.read(r"C:\Users\chiya\PycharmProjects\HybridFramwork\Configuaration\config.ini")
+config.read(r"C:\Users\chiya\PycharmProjects\Pytesthybrid\Configuaration\config.ini")
 
 class Readdata:
     @staticmethod

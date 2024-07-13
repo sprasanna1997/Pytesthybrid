@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from Pageobject.forms import Forms
 
-class TestForms:
+class Test_Forms:
 
     def test_practiceform(self,setup):
         self.driver=setup
