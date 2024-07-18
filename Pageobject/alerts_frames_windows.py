@@ -29,6 +29,9 @@ alertinput_btn_xpath='(//button[text()="Click Me"])[3]'
 alerttext_text_xpath='//div[@id="desk"]'
 
 
+#-------------------Frames-------------------------------
+frames_btn_xpath='//a[text()=" Frames"]'
+
 class Alerts_Frames_Windows:
 
     def __init__(self,driver):
@@ -109,6 +112,17 @@ class Alerts_Frames_Windows:
         self.driver.switch_to.alert.accept()
         self.logger.info("******TC014.3-Alerts, Frames & Windows -Alerts Entering Input Values- Passed*******")
 
+    def frames(self):
+        self.wait.until(ec.element_to_be_clickable((By.XPATH, alerts_btn_xpath))).click()
+        self.wait.until(ec.element_to_be_clickable((By.XPATH,frames_btn_xpath))).click()
+        self.driver.switch_to.frame(0)
+        frames_txt=self.driver.find_element(By.XPATH,"//div /h1").text
+        assert frames_txt=='Selenium - Automation Practice Form','Unable to Locate the Iframe Text'
+        self.driver.switch_to.default_content()
+        self.driver.switch_to.frame(0)
+        frames2_txt = self.driver.find_element(By.XPATH, "//div /h1").text
+        assert frames2_txt == 'Selenium - Automation Practice Form', 'Unable to Locate the Iframe Text'
+        self.logger.info("******TC015-Alerts, Frames & Windows -Frame- Passed*******")
 
 
 

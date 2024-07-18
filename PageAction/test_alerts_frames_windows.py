@@ -16,4 +16,10 @@ class Test_Alerts_Frames_Windows:
         alerts_obj.alerts()
         self.driver.quit()
 
+    @pytest.mark.unittesting
+    def test_frames(self,setup):
+        self.driver=setup
+        frames_obj=Alerts_Frames_Windows(self.driver)
+        frames_obj.frames()
+        self.driver.quit()
 
